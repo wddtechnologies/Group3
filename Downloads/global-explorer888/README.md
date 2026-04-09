@@ -2,6 +2,20 @@
 
 An Angular web application that allows users to search for detailed information about any country in the world using the [REST Countries API](https://restcountries.com/).
 
+## Screenshots
+
+**Light mode — empty state**
+![Light mode empty](src/images/sample1.png)
+
+**Light mode — search result**
+![Light mode result](src/images/sample2.png)
+
+**Dark mode — search result**
+![Dark mode result](src/images/sample3.png)
+
+**Dark mode — dropdown open**
+![Dark mode dropdown](src/images/sample.png)
+
 ## Features
 
 - Search for any country by its full name
