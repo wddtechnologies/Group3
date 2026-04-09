@@ -1,59 +1,68 @@
-# GlobalExplorer
+# Global Explorer
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+An Angular web application that allows users to search for detailed information about any country in the world using the [REST Countries API](https://restcountries.com/).
 
-## Development server
+## Features
 
-To start a local development server, run:
+- Search for any country by its full name
+- Dropdown with all available country names
+- Displays country details: flag, capital, region, subregion, population, languages, currencies, and timezones
+- Dark mode support (persisted via localStorage)
 
-```bash
-ng serve
-```
+## Tech Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [Angular 21](https://angular.dev/)
+- [REST Countries API v3.1](https://restcountries.com/)
+- TypeScript
+- CSS
 
-## Code scaffolding
+## Getting Started
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Prerequisites
 
-```bash
-ng generate component component-name
-```
+- Node.js >= 18
+- npm >= 11
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Installation
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Run Development Server
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Open your browser at `http://localhost:4200`.
 
-For end-to-end (e2e) testing, run:
+### Build
 
 ```bash
-ng e2e
+npm run build
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Run Tests
 
-## Additional Resources
+```bash
+npm test
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── country-card/     # Displays country details
+│   │   ├── country-list/     # Renders a list of country cards
+│   │   └── search-bar/       # Search input with dropdown
+│   ├── models/
+│   │   └── country.model.ts  # Country data interface
+│   ├── pages/
+│   │   └── home/             # Main page with search logic
+│   └── services/
+│       └── country.service.ts # API calls to REST Countries
+└── styles.css                 # Global styles
+```
