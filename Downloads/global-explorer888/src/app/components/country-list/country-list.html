@@ -1,0 +1,5 @@
+<section class="results-section">
+  @for (country of countries; track country.name.common) {
+    <app-country-card [country]="country"></app-country-card>
+  }
+</section>

@@ -1,0 +1,30 @@
+<section class="search-section">
+  <div class="search-row">
+    <!-- Text search input -->
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Enter a full country name..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="submitSearch()"
+    />
+
+    <!-- Country dropdown -->
+    <select
+      class="search-input"
+      [(ngModel)]="selectedCountry"
+      (change)="selectFromDropdown()"
+    >
+      <option value="">Choose a country...</option>
+
+      @for (country of countryOptions; track country) {
+        <option [value]="country">{{ country }}</option>
+      }
+    </select>
+
+    <!-- Search button -->
+    <button class="btn btn-dark search-button" (click)="submitSearch()">
+      Search
+    </button>
+  </div>
+</section>

@@ -1,0 +1,73 @@
+<div class="page-shell">
+  <!-- =========================================================
+       HEADER
+       ========================================================= -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-brand">
+        <img
+          src="/global-explorer.png"
+          alt="Global Explorer Logo"
+          class="site-logo"
+        />
+      </div>
+      <button class="dark-toggle" (click)="toggleDarkMode()" [attr.aria-label]="isDark ? 'Switch to light mode' : 'Switch to dark mode'">
+        {{ isDark ? '☀️ Light' : '🌙 Dark' }}
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       MAIN CONTENT
+       ========================================================= -->
+  <main class="page-main">
+    <div class="page-container">
+      <!-- Page Intro -->
+      <header class="page-header">
+        <h2 class="page-title">Explore Country Information</h2>
+        <p class="page-subtitle">
+          Search for a country by its full name, or choose one from the dropdown list,
+          to view its name, capital, region, subregion, population, flag, languages,
+          currencies, timezones, and map link.
+        </p>
+      </header>
+
+      <!-- Reusable Search Component -->
+      <app-search-bar (search)="handleSearch($event)"></app-search-bar>
+
+      <!-- Dynamic Results -->
+      <section class="results-section">
+        @if (isLoading) {
+          <div class="loading-state">Loading country data...</div>
+        } @else if (errorMessage) {
+          <div class="error-state">{{ errorMessage }}</div>
+        } @else if (selectedCountry) {
+          <app-country-card [country]="selectedCountry"></app-country-card>
+        } @else {
+          <div class="empty-state">
+            Search for a full country name or choose a country from the dropdown list.
+          </div>
+        }
+      </section>
+    </div>
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="footer-content">
+        <img
+          src="/global-explorer.png"
+          alt="Global Explorer Logo"
+          class="footer-logo"
+        />
+
+        <p class="site-footer__text">
+          Global Explorer © 2026 · Built with Angular, Bootstrap, and the REST Countries API
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>

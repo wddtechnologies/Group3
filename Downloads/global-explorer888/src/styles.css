@@ -1,0 +1,480 @@
+/* =========================================================
+   GLOBAL IMPORTS
+   ========================================================= */
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --app-bg: #eef3f9;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --text-main: #172033;
+  --text-muted: #5f6b7a;
+  --border-soft: rgba(255, 255, 255, 0.35);
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+  --radius-lg: 1.4rem;
+  --radius-md: 1rem;
+  --header-bg: rgba(255, 255, 255, 0.78);
+  --footer-bg: rgba(23, 32, 51, 0.95);
+  --info-item-bg: rgba(250, 250, 250, 0.9);
+  --info-item-border: #e6ebf2;
+  --input-bg: rgba(255, 255, 255, 0.92);
+  --input-border: #d8e1ec;
+  --state-border: #dbe3ee;
+}
+
+/* =========================================================
+   DARK MODE VARIABLES
+   ========================================================= */
+
+body.dark {
+  --app-bg: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.95);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+  --header-bg: rgba(15, 23, 42, 0.88);
+  --footer-bg: rgba(5, 10, 20, 0.98);
+  --info-item-bg: rgba(15, 23, 42, 0.8);
+  --info-item-border: rgba(100, 116, 139, 0.3);
+  --input-bg: rgba(30, 41, 59, 0.95);
+  --input-border: rgba(100, 116, 139, 0.4);
+  --state-border: rgba(100, 116, 139, 0.3);
+}
+
+body.dark {
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.08), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.10), transparent 30%),
+    linear-gradient(135deg, #0f172a 0%, #1a2235 40%, #0f1f1a 100%);
+}
+
+
+/* =========================================================
+   BASE PAGE SETUP
+   ========================================================= */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(59, 130, 246, 0.22), transparent 28%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.18), transparent 26%),
+    radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.16), transparent 30%),
+    linear-gradient(135deg, #edf4ff 0%, #f8fbff 40%, #edf7f2 100%);
+  background-attachment: fixed;
+}
+
+
+/* =========================================================
+   APP BACKGROUND DECORATION
+   ========================================================= */
+
+.page-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-shell::before,
+.page-shell::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.page-shell::before {
+  width: 420px;
+  height: 420px;
+  top: 110px;
+  left: -120px;
+  background: rgba(59, 130, 246, 0.16);
+}
+
+.page-shell::after {
+  width: 360px;
+  height: 360px;
+  bottom: 80px;
+  right: -100px;
+  background: rgba(16, 185, 129, 0.14);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(14px);
+  background: var(--header-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.site-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Dark mode toggle */
+.dark-toggle {
+  background: none;
+  border: 1.5px solid var(--input-border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.dark-toggle:hover {
+  background: var(--info-item-bg);
+  border-color: var(--text-muted);
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Header logo image */
+.site-logo {
+  display: block;
+  width: auto;
+  max-width: 220px;
+  max-height: 56px;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   MAIN PAGE LAYOUT
+   ========================================================= */
+
+.page-main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 44px 16px 60px;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  letter-spacing: -0.03em;
+}
+
+.page-subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   SEARCH SECTION
+   ========================================================= */
+
+.search-section {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  margin-bottom: 28px;
+}
+
+.search-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1 1 280px;
+  min-height: 54px;
+  border-radius: 999px;
+  border: 1px solid var(--input-border);
+  padding: 0 18px;
+  font-size: 1rem;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text-main);
+}
+
+.search-input:focus {
+  border-color: #94a3b8;
+  box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.12);
+}
+
+.search-button {
+  min-height: 54px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   RESULTS SECTION
+   ========================================================= */
+
+.results-section {
+  display: grid;
+  gap: 24px;
+}
+
+
+/* =========================================================
+   COUNTRY CARD
+   ========================================================= */
+
+.country-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.country-card__body {
+  padding: 24px;
+}
+
+.country-card__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.info-item {
+  background: var(--info-item-bg);
+  border: 1px solid var(--info-item-border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  min-height: 124px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text-main);
+  word-break: break-word;
+}
+
+.grid-flag {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 0.85rem;
+  border: 1px solid var(--state-border);
+  background: var(--input-bg);
+}
+
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   STATES
+   ========================================================= */
+
+.empty-state,
+.loading-state,
+.error-state {
+  background: var(--card-bg);
+  border: 1px dashed var(--state-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  background: var(--footer-bg);
+  color: rgba(255, 255, 255, 0.88);
+  margin-top: 32px;
+}
+
+.site-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Footer content wrapper */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Footer logo */
+.footer-logo {
+  display: block;
+  width: auto;
+  max-width: 140px;
+  max-height: 38px;
+  object-fit: contain;
+  opacity: 0.96;
+}
+
+.site-footer__text {
+  margin: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 1199px) {
+  .country-card__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .site-header__inner {
+    padding: 8px 14px;
+  }
+
+  .site-logo {
+    max-width: 180px;
+    max-height: 46px;
+  }
+
+  .footer-logo {
+    max-width: 120px;
+    max-height: 32px;
+  }
+
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .site-footer__text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .page-main {
+    padding: 32px 12px 48px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .country-card__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .country-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
+  }
+
+  .site-logo {
+    max-width: 150px;
+    max-height: 40px;
+  }
+
+  .footer-logo {
+    max-width: 100px;
+    max-height: 28px;
+  }
+}

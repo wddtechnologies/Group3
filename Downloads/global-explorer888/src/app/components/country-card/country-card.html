@@ -1,0 +1,72 @@
+<div class="country-card">
+  <div class="country-card__body">
+    <div class="country-card__grid">
+      <!-- =====================================================
+           TOP ROW
+           ===================================================== -->
+      <div class="info-item">
+        <span class="info-label">Name</span>
+        <span class="info-value">{{ country.name.common }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Capital</span>
+        <span class="info-value">{{ getCapital() }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Region</span>
+        <span class="info-value">{{ country.region }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Subregion</span>
+        <span class="info-value">{{ country.subregion || 'N/A' }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Population</span>
+        <span class="info-value">{{ country.population | number }}</span>
+      </div>
+
+      <!-- =====================================================
+           BOTTOM ROW
+           ===================================================== -->
+      <div class="info-item">
+        <span class="info-label">Flag</span>
+        <img
+          class="grid-flag"
+          [src]="country.flags.png"
+          [alt]="country.flags.alt || country.name.common"
+        />
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Languages</span>
+        <span class="info-value">{{ getLanguages() }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Currencies</span>
+        <span class="info-value">{{ getCurrencies() }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Timezones</span>
+        <span class="info-value">{{ getTimezones() }}</span>
+      </div>
+
+      <div class="info-item">
+        <span class="info-label">Map</span>
+        <a
+          [href]="country.maps.googleMaps"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-outline-dark map-button"
+        >
+          View Map
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
